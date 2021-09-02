@@ -16,13 +16,26 @@ function computerPlay() {
 // We write a function that takes as parameters the playerSelection and the computerSelection, tha would be a single game round
 function playRound(playerSelection, computerSelection) {
     // Check the player selection
-/*     checkPlayerSelection(); */
+     checkPlayerSelection();
     // We make both variables case insenstive
-    playerSelection = playerSelection.toLowerCase()
-    console.log(playerSelection)
-    computerSelection = computerSelection.toLowerCase()
-    console.log(computerSelection)
+    makeCaseInsensitive(playerSelection);
+    console.log(playerSelection);
+    console.log(computerSelection);
     // Check who is the winner checkin each possibility
+    return checkResult(playerSelection, computerSelection);
+}
+
+function checkPlayerSelection() {
+    while (playerSelection.toLowerCase() !== "rock" && playerSelection.toLowerCase() !== "paper" && playerSelection.toLowerCase() !== "scissors") {
+        alert('Insert a valid input');
+        playerSelection = prompt('Choose Rock, Paper or Scissors');
+    }
+}
+
+function makeCaseInsensitive(selection) {
+   selection = selection.toLowerCase();
+}
+function checkResult(playerSelection, computerSelection) {
     if (playerSelection === "rock" && computerSelection === "paper") {
         return "You Lose! Paper beats Rock";
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
@@ -38,22 +51,7 @@ function playRound(playerSelection, computerSelection) {
     } else {
         return "It's a TIE!"
     }
-
 }
-
-/* function checkPlayerSelection() {
-    while (playerSelection.toLowerCase() !== "rock" || playerSelection.toLowerCase() !== "paper" || playerSelection.toLowerCase() !== "scissors") {
-        alert('Insert a valid Input')
-        playerSelection = prompt("Choose from Rock, Paper or Scissors");
-    }
-} */
-
-/* function caseInsensitive() {
-    
-} */
-/* function checkResult() {
-    
-} */
 // We write a function to play a full game which are 5 rounds
 
 function game() {
