@@ -1,58 +1,12 @@
-// Create a function for the computer play
-function computerPlay() {
-    // Create a variable for a random value from 0 to 2:
-    let selection = Math.floor(Math.random() * 3);
-    // Return a different string value based on the selection variable
-    switch (selection) {
-        case 0:
-            return 'Rock'
-        case 1:
-            return 'Paper'
-        case 2:
-            return 'Scissors'
-    }
-    
-}
-// We write a function that takes as parameters the playerSelection and the computerSelection, tha would be a single game round
-function playRound(playerSelection, computerSelection) {
-    // Check the player selection
-     checkPlayerSelection();
-    // We make both variables case insenstive
-    makeCaseInsensitive(playerSelection);
-    console.log(playerSelection);
-    console.log(computerSelection);
-    // Check who is the winner checkin each possibility
-    return checkResult(playerSelection, computerSelection);
-}
+// CREATE ALL VARIABLES NEEDED
 
-function checkPlayerSelection() {
-    while (playerSelection.toLowerCase() !== "rock" && playerSelection.toLowerCase() !== "paper" && playerSelection.toLowerCase() !== "scissors") {
-        alert('Insert a valid input');
-        playerSelection = prompt('Choose Rock, Paper or Scissors');
-    }
-}
+let playerSelection = prompt("Choose from Rock, Paper or Scissors");
+let computerSelection = computerPlay();
+let playerScore = 0;
+let computerScore = 0;
+console.log(game());
 
-function makeCaseInsensitive(selection) {
-   selection = selection.toLowerCase();
-}
-function checkResult(playerSelection, computerSelection) {
-    if (playerSelection === "rock" && computerSelection === "paper") {
-        return "You Lose! Paper beats Rock";
-    } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        return "You Win! Rock beats Scissors"
-    } else if (playerSelection === "paper" && computerSelection === "scissors") {
-        return "You Lose! Scissors beats Paper"
-    } else if (playerSelection === "paper" && computerSelection === "rock") {
-        return "You Win! Paper beats Rock"
-    } else if (playerSelection === "scissors" && computerSelection === "rock") {
-        return "You Lose! Rock beats Scissors"
-    } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return "You Win! Scissors beats Paper"
-    } else {
-        return "It's a TIE!"
-    }
-}
-// We write a function to play a full game which are 5 rounds
+// We write THE MAIN function to play a full game which are 5 rounds
 
 function game() {
     // Store the result of the round in a variable
@@ -82,6 +36,64 @@ function game() {
     // Check the winner of the game
     return checkGameWinner();
 }
+
+// Here are the HELPER FUNCTIONS
+// Create a function for the computer play
+function computerPlay() {
+    // Create a variable for a random value from 0 to 2:
+    let selection = Math.floor(Math.random() * 3);
+    // Return a different string value based on the selection variable
+    switch (selection) {
+        case 0:
+            return 'Rock'
+        case 1:
+            return 'Paper'
+        case 2:
+            return 'Scissors'
+    }
+    
+}
+// We write a function that takes as parameters the playerSelection and the computerSelection, tha would be a single game round
+function playRound(playerSelection, computerSelection) {
+    // Check the player selection
+     checkPlayerSelection();
+    // We make both variables case insenstive
+    playerSelection = makeCaseInsensitive(playerSelection);
+    console.log(playerSelection);
+    computerSelection = makeCaseInsensitive(computerSelection);
+    console.log(computerSelection);
+    // Check who is the winner checkin each possibility
+    return checkResult(playerSelection, computerSelection);
+}
+
+function checkPlayerSelection() {
+    while (playerSelection.toLowerCase() !== "rock" && playerSelection.toLowerCase() !== "paper" && playerSelection.toLowerCase() !== "scissors") {
+        alert('Insert a valid input');
+        playerSelection = prompt('Choose Rock, Paper or Scissors');
+    }
+}
+
+function makeCaseInsensitive(selection) {
+   return selection.toLowerCase();
+}
+function checkResult(playerSelection, computerSelection) {
+    if (playerSelection === "rock" && computerSelection === "paper") {
+        return "You Lose! Paper beats Rock";
+    } else if (playerSelection === "rock" && computerSelection === "scissors") {
+        return "You Win! Rock beats Scissors"
+    } else if (playerSelection === "paper" && computerSelection === "scissors") {
+        return "You Lose! Scissors beats Paper"
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
+        return "You Win! Paper beats Rock"
+    } else if (playerSelection === "scissors" && computerSelection === "rock") {
+        return "You Lose! Rock beats Scissors"
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        return "You Win! Scissors beats Paper"
+    } else {
+        return "It's a TIE!"
+    }
+}
+
 
 function checkGameWinner() {
     if (playerScore > computerScore) {
@@ -120,10 +132,3 @@ function checkRoundWinner(round) {
         return `TIE round. Your score is ${playerScore} - ${computerScore}.`;
     }
 }
-
-
-let playerSelection = prompt("Choose from Rock, Paper or Scissors");
-let computerSelection = computerPlay();
-let playerScore = 0;
-let computerScore = 0;
-console.log(game());
